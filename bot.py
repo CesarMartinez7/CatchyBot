@@ -19,12 +19,14 @@ def callback_query(call):
 
 @bot.message_handler(commands=["start"])
 def send_welcome(message):
-    bot.reply_to(message,"Hola👋, soy tu bot asistente de descarga mp3 de yt 🤖. ")
+    bot.reply_to(message,"Hola👋, soy tu bot asistente de descarga mp3 y mp4 de yt  🤖. ")
+
+
 
 
 @bot.message_handler(commands=["help"])
 def send_help(message):
-    bot.reply_to(message,"Puedes interactuar conmingo usando comandos 💻 \n🔽/down <urlyt>: Para descargar videos en formato mp3, la sintaxis es /down <url>")
+    bot.reply_to(message,"Puedes interactuar conmingo usando comandos 💻 \n🔽/down <urlyt>: Para descargar sonido en formato mp3, la sintaxis es /down <url>\n🔽/down4 <urlyt>: Para descargar videos en formato webm ")
 
 
 @bot.message_handler(commands=["down"],content_types=["text"],func=lambda m: True)
@@ -68,7 +70,7 @@ def download_music(message):
 def download_mp4(message):
     try:
         if len(message.text) <= 6:
-            bot.reply_to(message,"Demasiado corto, intente de nuevo")
+            bot.reply_to(message,"Demasiado corto, intente de nuevo.")
         else:
             bot.reply_to(message,message.text[7:])
             url: str = message.text[7:]
@@ -77,9 +79,9 @@ def download_mp4(message):
                 output_filename = ydl.prepare_filename(info_dict)
                 print(f"downloaded {output_filename}")
             with open(f"{output_filename}","rb") as video:
-                bot.reply_to(message,"Descargandooo 👋 ")
+                bot.reply_to(message,"Descargando... 👋 ")
                 bot.send_video(message.chat.id,video)
-                bot.reply_to(message,"Enviado con exito")
+                bot.reply_to(message,"Descargado con exito 🤖")
     except Exception as error:
         bot.reply_to(message,error)
     finally:
