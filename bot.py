@@ -33,6 +33,7 @@ def download_music(message):
             video_title = info_dict.get('title', 'audio')
             bot.reply_to(message,video_title)
             ydl_opts = {
+            'cookies': 'cookies.txt',
             'format': 'bestaudio/best',
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
