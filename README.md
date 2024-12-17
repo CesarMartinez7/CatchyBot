@@ -1,6 +1,6 @@
-# Comandos del Bot de Telegram
+# Comandos CatchyBot
 
-¡Bienvenido! Aquí están los comandos disponibles para interactuar con nuestro bot.
+Bienvenido, Aquí están los comandos disponibles para interactuar con nuestro bot.
 
 ## Comandos Generales
 
