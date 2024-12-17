@@ -27,6 +27,8 @@ Bienvenido, Aquí están los comandos disponibles para interactuar con nuestro b
 
 ---
 
+
 ### ¡Gracias por usar nuestro bot! 👋
 Si tienes alguna duda o necesitas ayuda adicional, no dudes en contactarnos.
 ### Goodbye 👋🐍 
+[Link de mi bot aqui 🤖](https://web.telegram.org/a/#7759974599) 
