@@ -6,6 +6,7 @@ Bienvenido, Aquí están los comandos disponibles para interactuar con nuestro b
 
 - **/start**: Inicia una conversación con el bot y obtén un mensaje de bienvenida.
 - **/help**: Muestra este mensaje de ayuda con todos los comandos disponibles.
+- **/list**: Muestra la lista de descargas
 
 ## Descarga y Procesamiento de Medios
 
