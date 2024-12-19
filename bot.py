@@ -26,7 +26,7 @@ for file in directorio:
 
 
 # Tu token de API aqui
-APITOKEN = "7759974599:AAEat0xZn2z1v4J7ZoirL13lnvMFQCjXBHY"
+APITOKEN = ""
 
 bot = telebot.TeleBot(token=APITOKEN)
 
