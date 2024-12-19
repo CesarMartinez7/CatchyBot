@@ -1,6 +1,7 @@
 import telebot
 import yt_dlp
 from os import remove,listdir,path
+from os import remove,listdir,path
 from time import sleep
 from yt_dlp import YoutubeDL
 from random import randrange
@@ -13,23 +14,27 @@ print("HTTPS_PROXY:", os.getenv("HTTPS_PROXY"))
 print("NO_PROXY:", os.getenv("NO_PROXY"))
 
 
+descargas = []
+
 directorio = listdir()
-extensiones = [".mp3",".webm",".jpg"]
+extensiones = [".mp3",".webm",".jpg","mp4"]
 
 for file in directorio:
     if path.splitext(file)[1] in extensiones:
         remove(f"./{file}")
         print("Limpiando directorio 🤖🤖🤖")
 
+
+# Tu token de API aqui
 APITOKEN = "7759974599:AAEat0xZn2z1v4J7ZoirL13lnvMFQCjXBHY"
 
 bot = telebot.TeleBot(token=APITOKEN)
 
-
-@bot.message_handler(commands=["toto"])
-def output_file(message):
-    text = str(message.text.split(" ")[2])
-    bot.reply_to(message,text)
+@bot.message_handler(commands=["list"])
+def list_files(message):
+    bot.reply_to(message,"Lista de descargas 🤖🐍")
+    for file in descargas:
+        bot.reply_to(message,f"Archivo: **{file.split('.')[0]}** Formato: **{file.split('.')[1]}**")
 
 
 
@@ -38,11 +43,9 @@ def send_welcome(message):
     bot.reply_to(message,"Hello you 👋, soy tu bot asistente de descarga mp3, mp4 y webm hecho con Python  🤖. ")
 
 
-
-
 @bot.message_handler(commands=["help"])
-def send_help(message):
-    bot.reply_to(message,"c 0867")
+def help_fun(message):
+    bot.reply_to(message,"Hola, soy tu bot asistente de descarga mp3, mp4 y webm hecho con Python  🤖. \n\n")
 
 
 @bot.message_handler(commands=["down"],content_types=["text"],func=lambda m: True)
@@ -69,7 +72,7 @@ def download_music(message):
                     'preferredquality': '192',
                 }],
                 'outtmpl': video_title,
-                'ffmpeg_location': r".\ffmpeg-master-latest-win64-gpl\ffmpeg-master-latest-win64-gpl\bin"
+                'ffmpeg_location': r".\ffmpeg-master-latest-win64-gpl\ffmpeg-master-latest-win64-gpl\binnn"
             }
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([url])
@@ -119,6 +122,7 @@ def download_music(message):
             with open(f'{name_fileoutput}.mp3', 'rb') as audio:
                 bot.send_audio(message.chat.id, audio)
                 bot.reply_to(message, "¡Descarga completadaaa!")
+                descargas.append(f"{name_fileoutput}.mp3")
     except Exception as e:
             bot.reply_to(message, f"Ocurrió un error: {str(e)}")
     finally:
@@ -176,7 +180,14 @@ def obtener_imagenes(message):
         bot.send_video(message.chat.id,image)
 
 
+
+
+
 bot.infinity_polling()
+
+
+
+
 
 
 
