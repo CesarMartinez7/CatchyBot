@@ -13,9 +13,7 @@ Bienvenido, Aquí están los comandos disponibles para interactuar con nuestro b
 ```sh
    which ffmpeg
 ```
-```sh
-    wget https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2024-12-13-12-34/ffmpeg-master-latest-win64-gpl.zip
-```
+
 En linux en diferente distros ya viene descargado para la reproduccion y cambio de formatos.
 
 
