@@ -8,6 +8,17 @@ Bienvenido, Aquí están los comandos disponibles para interactuar con nuestro b
 - **/help**: Muestra este mensaje de ayuda con todos los comandos disponibles.
 - **/list**: Muestra la lista de descargas.
 
+# Es importante descargar ffmepg para la descarga:
+
+```sh
+   which ffmpeg
+```
+```sh
+    wget https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2024-12-13-12-34/ffmpeg-master-latest-win64-gpl.zip
+```
+En linux en diferente distros ya viene descargado para la reproduccion y cambio de formatos.
+
+
 ## Descarga y Procesamiento de Medios
 
 - **/down2 [URL]**: Descarga un video de YouTube y lo convierte en formato mp3.
