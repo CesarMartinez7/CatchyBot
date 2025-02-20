@@ -26,7 +26,7 @@ for file in directorio:
 
 
 # Tu token de API aqui
-APITOKEN = ""
+APITOKEN = "7759974599:AAEat0xZn2z1v4J7ZoirL13lnvMFQCjXBHY"
 
 bot = telebot.TeleBot(token=APITOKEN)
 
@@ -72,7 +72,7 @@ def download_music(message):
                     'preferredquality': '192',
                 }],
                 'outtmpl': video_title,
-                'ffmpeg_location': r".\ffmpeg-master-latest-win64-gpl\ffmpeg-master-latest-win64-gpl\binnn"
+                'ffmpeg_location': r"/usr/bin/ffmpeg"
             }
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([url])
@@ -92,9 +92,9 @@ def download_music(message):
 def download_music(message):
     texto = list(message.text.split(" "))
     url: str = texto[1]
-    bot.reply_to(message,f"Output NamefileSong 🎵🎶: {texto[2]}")
+    bot.reply_to(message,f"Output NamefileSong 🎵🎶: {texto[1]}")
     bot.reply_to(message,url)
-    name_fileoutput : str = texto[2]
+    name_fileoutput : str = texto[1]
     try:
         if len(url) > 43:
             bot.reply_to(message,"Demasiado Largo, no se pueden descargar formatos de radio o mix. 🌋")
@@ -113,7 +113,7 @@ def download_music(message):
                     'preferredquality': '192',
                 }],
                 'outtmpl': name_fileoutput,
-                'ffmpeg_location': r".\ffmpeg-master-latest-win64-gpl\ffmpeg-master-latest-win64-gpl\bin"
+                'ffmpeg_location': r"/usr/bin/ffmpeg"
             }
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([url])
