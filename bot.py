@@ -39,12 +39,12 @@ def list_files(message):
 
 
 @bot.message_handler(commands=["start"])
-def send_welcome(message):
+def send_welcome(message) -> None:
     bot.reply_to(message,"Hello you 👋, soy tu bot asistente de descarga mp3, mp4 y webm hecho con Python  🤖. ")
 
 
 @bot.message_handler(commands=["help"])
-def help_fun(message):
+def help_fun(message) -> None:
     bot.reply_to(message,"Hola, soy tu bot asistente de descarga mp3, mp4 y webm hecho con Python  🤖. \n\n")
 
 
@@ -72,7 +72,7 @@ def download_music(message):
                     'preferredquality': '192',
                 }],
                 'outtmpl': video_title,
-                'ffmpeg_location': r"/usr/bin/ffmpeg"
+                'ffmpeg_location': r"../../../../bin/ffmpeg"
             }
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([url])
@@ -82,9 +82,7 @@ def download_music(message):
                 bot.reply_to(message, "¡Descarga completada!")
     except Exception as e:
             bot.reply_to(message, f"Ocurrió un error: {str(e)}")
-    finally:
-        sleep(1)
-        remove(f"./{video_title}.mp3")
+
 
 
 
@@ -113,7 +111,7 @@ def download_music(message):
                     'preferredquality': '192',
                 }],
                 'outtmpl': name_fileoutput,
-                'ffmpeg_location': r"/usr/bin/ffmpeg"
+                'ffmpeg_location': r"usr/bin/ffmpeg"
             }
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([url])
