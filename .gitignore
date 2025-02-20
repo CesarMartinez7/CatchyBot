@@ -1,0 +1,8 @@
+cookies.txt
+cookiest.dat
+
+*.mp3
+*.mp4
+
+.env
+.envkey
