@@ -1,12 +1,14 @@
 Brotli==1.1.0
 certifi==2024.12.14
 charset-normalizer==3.4.0
+dotenv==0.9.9
 idna==3.10
 mutagen==1.47.0
 pycryptodomex==3.21.0
-pytelegrambotapi==4.23.0
+pyTelegramBotAPI==4.23.0
+python-dotenv==1.0.1
 requests==2.32.3
 telebot==0.0.5
 urllib3==2.2.3
 websockets==13.1
-yt-dlp==2024.10.22
+yt-dlp==2025.2.19

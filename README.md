@@ -1,6 +1,8 @@
 # Comandos CatchyBot
 
-Bienvenido, Aquí están los comandos disponibles para interactuar con nuestro bot.
+Bienvenido, a Catchybot, es un bot de telegram hecho simplemente para la descargas de audio y videos de Youtube.
+
+
 
 ## Comandos Generales
 
@@ -8,14 +10,17 @@ Bienvenido, Aquí están los comandos disponibles para interactuar con nuestro b
 - **/help**: Muestra este mensaje de ayuda con todos los comandos disponibles.
 - **/list**: Muestra la lista de descargas.
 
-# Es importante descargar ffmepg para la descarga:
+## Instalacion:
 
 ```sh
    which ffmpeg
 ```
 
-En linux en diferente distros ya viene descargado para la reproduccion y cambio de formatos.
+En linux en diferente distros ya viene descargado para la reproduccion y cambio de formatos se solo faltaria cambiar la ruta para que tome por default la ruta de ffmpeg que esta en __/usr/bin/ffmpeg__.
 
+Si estas en windows es importante descargarlo desde la pagina oficial y tomar la ruta de ejecutable.
+
+Siempre es importante tener los modulos de python en las ultimas versiones.
 
 ## Descarga y Procesamiento de Medios
 
