@@ -1,7 +1,6 @@
 import telebot
 import yt_dlp
 from os import remove, listdir, path
-from os import remove, listdir, path
 from time import sleep
 from yt_dlp import YoutubeDL
 from random import randrange
@@ -17,8 +16,10 @@ load_dotenv()
 APITOKEN = os.getenv("APITOKEN")
 
 # If el kernel es linux buscar la libreria ffmpeg en los libs del os // Preferible una ruta absoluta para mejor manejo de las librerias y diferentes distros
-location_ffmepg =   r"../../../../bin/ffmpeg" if is_linux() else r"./ffmpeg/.....Location here"
+location_ffmepg =   r"../../../../bin/ffmpeg" if is_linux() else r"./ffmpeg-master-latest-win64-gpl-shared/ffmpeg-master-latest-win64-gpl-shared/bin/ffmpeg.exe"
 
+
+print(f"RUTA DE LA UBICACION DE ffmepg :    {location_ffmepg}")
 
 print("HTTP_PROXY:", os.getenv("HTTP_PROXY"))
 print("HTTPS_PROXY:", os.getenv("HTTPS_PROXY"))
@@ -87,8 +88,8 @@ def download_music(message):
                 info_dict = ydl.extract_info(url, download=False)
                 video_title = info_dict.get("title", "audio")
                 bot.reply_to(message, video_title)
+                print(f"Esta es la rut de ffmepg {location_ffmepg}   segunda {know_path_ffmpeg()}")
                 ydl_opts = {
-                    "cookies": "cookies.txt",
                     "format": "bestaudio/best",
                     "postprocessors": [
                         {
@@ -98,7 +99,7 @@ def download_music(message):
                         }
                     ],
                     "outtmpl": video_title,
-                    "ffmpeg_location":  location_ffmepg or know_path_ffmpeg() # Saber locacin de los ffmpeg
+                    "ffmpeg_location":  location_ffmepg # Saber path del ffmpeg
                 }
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([url])
@@ -110,6 +111,9 @@ def download_music(message):
         bot.reply_to(message, f"Ocurrió un error: {str(e)}")
     else:
         remove(f"./{video_title}.mp3")
+
+
+
 
 
 @bot.message_handler(commands=["down2"], content_types=["text"], func=lambda m: True)

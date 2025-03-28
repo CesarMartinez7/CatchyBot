@@ -1,8 +1,12 @@
 cookies.txt
 cookiest.dat
 
+ffmpeg
+ffmpegg
+
 *.mp3
 *.mp4
+
 
 .env
 .entorno
