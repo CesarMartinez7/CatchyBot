@@ -8,6 +8,7 @@ from random import randrange
 from io import BytesIO
 import os
 from dotenv import load_dotenv
+from utils import (is_linux, know_path_ffmpeg)
 
 
 # Cargar variables de entorno con el modulo dotenv
@@ -15,23 +16,27 @@ from dotenv import load_dotenv
 load_dotenv()
 APITOKEN = os.getenv("APITOKEN")
 
+# If el kernel es linux buscar la libreria ffmpeg en los libs del os // Preferible una ruta absoluta para mejor manejo de las librerias y diferentes distros
+location_ffmepg =   r"../../../../bin/ffmpeg" if is_linux() else r"./ffmpeg/.....Location here"
+
 
 print("HTTP_PROXY:", os.getenv("HTTP_PROXY"))
 print("HTTPS_PROXY:", os.getenv("HTTPS_PROXY"))
 print("NO_PROXY:", os.getenv("NO_PROXY"))
-print("APITOKEN:", APITOKEN)
 
+
+# Lista de nombres de descargas
 descargas : list = []
 
 directorio : list = listdir()
 extensiones = [".mp3", ".webm", ".jpg", "mp4"]
 
+# Al inicializar eliminar todos los archivos con las extensiones :: Linea 32 ...
+
 for file in directorio:
     if path.splitext(file)[1] in extensiones:
         remove(f"./{file}")
         print("Limpiando directorio 🤖🤖🤖")
-
-
 
 
 
@@ -93,7 +98,7 @@ def download_music(message):
                         }
                     ],
                     "outtmpl": video_title,
-                    "ffmpeg_location": r"../../../../bin/ffmpeg",
+                    "ffmpeg_location":  location_ffmepg or know_path_ffmpeg() # Saber locacin de los ffmpeg
                 }
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([url])
@@ -210,6 +215,7 @@ bot.infinity_polling()
 
 
 """
-Es importante la descarga de la ruta de ffmpeg
+Es importante la descarga de la ruta de ffmpeg  -- En la mayor parte de las distros de linux ya viene descargado.
 Thanks 👋
+
 """
